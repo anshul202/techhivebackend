@@ -1,4 +1,5 @@
 const express = require('express');
+require('dotenv').config();
 const { check, validationResult } = require('express-validator');
 const bcrypt = require('bcrypt');
 const User = require('../Models/Users/users');
@@ -49,7 +50,7 @@ router.post('/', loginValidationRules, validate, async (req, res) => {
                 id: user.id
             }
         };
-        const token = jwt.sign(data, 'secret_mine', { expiresIn: '1h' });
+        const token = jwt.sign(data,process.env.JWT_SECRET, { expiresIn: '1h' });
 
         res.json({
             success: 1,
