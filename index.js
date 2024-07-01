@@ -1,7 +1,6 @@
 const express=require('express');
 
 const app=express();
-const port=4000;
 const multer=require('multer');
 const cors=require('cors');
 const connectDB=require('./connections');
@@ -14,8 +13,9 @@ const registerRoute=require('./Routes/registerUser');
 const loginRoute=require('./Routes/loginUser');
 const newCollectionRoute=require('./Routes/NewCollection');
 const popularRoute=require('./Routes/Popular');
+require('dotenv').config();
 const addtocartRoute=require('./Routes/Addtocart');
-
+const port=process.env.PORT || 4000;
 app.use(express.json());
 app.use(cors());
 
